@@ -1,5 +1,5 @@
 $TTL   60000
-@                IN      SOA     server.bomcliente.gsr.    root.server.bomcliente.gsr. (
+@                IN     SOA     server.bomcliente.gsr.    root.server.bomcliente.gsr. (
                         2017041101 ; serial
                         28800 ; refresh
                         14400 ; retry
@@ -8,7 +8,7 @@ $TTL   60000
                         );
 @                IN      NS      server.bomcliente.gsr.
                  IN      MX      10 mail.bomcliente.gsr.
-                 IN      A       10.0.0.6
-server           IN      A       10.0.0.6
-mail             IN      A       10.0.0.6
-www              IN      A       10.0.0.6
+                 IN      A       10.0.0.10
+server           IN      A       10.0.0.10
+mail             IN      A       10.0.0.10
+www              IN      A       10.0.0.10

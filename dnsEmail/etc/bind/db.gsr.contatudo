@@ -1,0 +1,17 @@
+$TTL   60000
+@               IN      SOA     dnsemail.contatudo.gsr.    root.dnsemail.contatudo.gsr. (
+                        2017042201 ; serial
+                        28800 ; refresh
+                        14400 ; retry
+                        3600000 ; expire
+                        0 ; negative cache ttl
+                        );
+;
+@               IN      NS      dnsemail.contatudo.gsr.
+@               IN      NS      dnshttp.contatudo.gsr.
+@               IN      MX      10 mail.contatudo.gsr.
+@               IN      A       10.0.2.82
+dnsemail        IN      A       10.0.2.82
+mail            IN      A       10.0.2.82
+dnsemail        IN      A       10.0.2.83
+www             IN      A       10.0.2.83
