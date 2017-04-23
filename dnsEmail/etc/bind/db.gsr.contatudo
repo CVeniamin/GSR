@@ -13,5 +13,9 @@ $TTL   60000
 @               IN      A       10.0.2.82
 dnsemail        IN      A       10.0.2.82
 mail            IN      A       10.0.2.82
-dnsemail        IN      A       10.0.2.83
+dnshttp         IN      A       10.0.2.83
 www             IN      A       10.0.2.83
+httpProxy       IN      A       10.0.2.84
+diretor         IN      A       10.0.2.66
+contabilista    IN      A       10.0.2.67
+rh              IN      A       10.0.2.68
