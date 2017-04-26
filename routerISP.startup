@@ -1,9 +1,11 @@
 ip addr add dev eth0 10.0.0.18/30
 ip link set dev eth0 up
-ip addr add dev eth1 192.168.100.1/24
-ip link set dev eth1 up
 ip addr add dev eth2 10.0.0.21/30
 ip link set dev eth2 up
 ip addr add dev eth3 10.0.0.1/30
 ip link set dev eth3 up
 /etc/init.d/zebra start
+/etc/init.d/apache2 start
+echo 1 >/proc/sys/net/ipv4/ip_forward
+iptables -t nat -A PREROUTING -i eth1 -j DNAT --to-destination 192.168.0.2
+iptables -t nat -A POSTROUTING -S 192.168.0.2 -j SNAT --to-source 192.168.100.1

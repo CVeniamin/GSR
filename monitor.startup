@@ -1,2 +1,7 @@
 ip addr add dev eth0 192.168.0.2/29
 ip link set dev eth0 up
+route add default gw 192.168.0.1 eth0
+cfgmaker --global 'WorkDir: /var/www' private@192.168.0.1 private@10.0.0.130 private@10.0.0.134 --output /root/mrtg.cfg
+env LANG=C /usr/bin/mrtg /root/mrtg.cfg --daemon
+indexmaker --title "Monitor" --output /var/www/index.html /root/mrtg.cfg
+/etc/init.d/apache2 start
