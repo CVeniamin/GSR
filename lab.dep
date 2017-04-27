@@ -1,2 +1,4 @@
+monitor:switchPrivado switchPublico routerSede routerLisboa routerPorto routerISP fileServer dnsEmail dnsHttp httpProxy
+diretor:routerSede
 contabilista:diretor
 rh:contabilista diretor

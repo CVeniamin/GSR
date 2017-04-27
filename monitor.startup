@@ -1,7 +1,22 @@
 ip addr add dev eth0 192.168.0.2/29
 ip link set dev eth0 up
 route add default gw 192.168.0.1 eth0
-cfgmaker --global 'WorkDir: /var/www' private@192.168.0.1 private@10.0.0.130 private@10.0.0.134 --output /root/mrtg.cfg
-env LANG=C /usr/bin/mrtg /root/mrtg.cfg --daemon
-indexmaker --title "Monitor" --output /var/www/index.html /root/mrtg.cfg
+env LANG=C mrtg /root/dnsEmail.cfg --daemon
+env LANG=C mrtg /root/dnsHttp.cfg --daemon
+env LANG=C mrtg /root/fileServer.cfg --daemon
+env LANG=C mrtg /root/httpProxy.cfg --daemon
+env LANG=C mrtg /root/routerLisboa.cfg --daemon
+env LANG=C mrtg /root/routerPorto.cfg --daemon
+env LANG=C mrtg /root/routerSede.cfg --daemon
+indexmaker --title "Monitor" --output /var/www/index.html /root/routerSede.cfg /root/routerLisboa.cfg /root/routerPorto.cfg /root/dnsEmail.cfg /root/dnsHttp.cfg /root/httpProxy.cfg /root/fileServer.cfg
 /etc/init.d/apache2 start
+
+
+#Gerar as config para todas as redes, nunca descomentar estes comandos, nunca!
+#cfgmaker --global 'WorkDir: /var/www' private@192.168.0.1 --output /root/routerSede.cfg
+#cfgmaker --global 'WorkDir: /var/www' private@10.0.0.130 --output /root/routerPorto.cfg
+#cfgmaker --global 'WorkDir: /var/www' private@10.0.0.134 --output /root/routerLisboa.cfg
+#cfgmaker --global 'WorkDir: /var/www' private@10.0.2.82 --output /root/dnsEmail.cfg
+#cfgmaker --global 'WorkDir: /var/www' private@10.0.2.83 --output /root/dnsHttp.cfg
+#cfgmaker --global 'WorkDir: /var/www' private@10.0.2.84 --output /root/httpProxy.cfg
+#cfgmaker --global 'WorkDir: /var/www' private@192.168.0.3 --output /root/fileServer.cfg

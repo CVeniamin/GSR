@@ -7,5 +7,9 @@ ip link set dev eth3 up
 /etc/init.d/zebra start
 /etc/init.d/apache2 start
 echo 1 >/proc/sys/net/ipv4/ip_forward
-iptables -t nat -A PREROUTING -i eth1 -j DNAT --to-destination 192.168.0.2
-iptables -t nat -A POSTROUTING -S 192.168.0.2 -j SNAT --to-source 192.168.100.1
+
+#Fornece acesso ao internet aos equipamentos da rede
+iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+
+#Adicionar este comando na sua maquina local(tap)
+#sudo ip route add 192.168.0.0/24 via 192.168.100.2
