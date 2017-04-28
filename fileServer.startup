@@ -1,4 +1,13 @@
 ip addr add dev eth0 192.168.0.3/29
 ip link set dev eth0 up
 route add default gw 192.168.0.1 eth0
+
+# Monitoring
 /etc/init.d/snmpd start
+
+# FTP
+groupadd ftpgroup
+useradd -b /home -p $6$p5TQ.QdqfLOrXIWi$cfDKEVjAKe8FVEb2BtPzK3fhBUNhKkMRjeLEZXL/WRTIrF2UYgjJu68dU5tHzRoAPGcMDcN5Ff9hq3jAQbTYC0 -G ftpgroup public
+useradd -b /home -p $6$RZgy7bkaY5sWg5wU$ODOKAg5ZADEYAvoTXJJgrPQdxW53K9U96Sd9KAReEY638tGaLA/XRZ77M4LnvDfTFP3kaCW.FlGxsLDX1rM6Z0 -G ftpgroup private
+
+/etc/init.d/proftpd start

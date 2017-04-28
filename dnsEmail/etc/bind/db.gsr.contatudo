@@ -13,6 +13,8 @@ $TTL   60000
 @               IN      A       10.0.2.82
 dnsemail        IN      A       10.0.2.82
 mail            IN      A       10.0.2.82
+imap            IN      A       10.0.2.82
+pop            IN      A       10.0.2.82
 dnshttp         IN      A       10.0.2.83
 www             IN      A       10.0.2.83
 httpProxy       IN      A       10.0.2.84

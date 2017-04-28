@@ -2,4 +2,20 @@ ip addr add dev eth0 10.0.0.10/29
 ip link set dev eth0 up
 ip route add 10.0.0.0/16 via 10.0.0.9
 ip route add 192.168.0.0/16 via 10.0.0.9
+
+# DNS
 /etc/init.d/bind start
+
+# Mail
+chmod a+w /var/spool/mail
+chmod go-rw /etc/exim4/exim4.conf
+
+useradd -b /home -p $6$eR7SwA0T97f9.3CD$fRSbBQJQGF9/scOqlgJw5eHGDdUHC5XWTHrxMM246gnpcJhBOzXKZVq/B3wJvJ4uXRMsh0WYTjiY3sjsXExRq/ info
+
+/etc/init.d/exim4 start
+/etc/init.d/inetd start
+
+# Web
+sudo a2ensite www.bomcliente.gsr.conf
+
+/etc/init.d/apache2 start
