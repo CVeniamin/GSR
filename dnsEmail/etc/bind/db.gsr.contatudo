@@ -19,3 +19,4 @@ httpProxy       IN      A       10.0.2.84
 diretor         IN      A       10.0.2.66
 contabilista    IN      A       10.0.2.67
 rh              IN      A       10.0.2.68
+ftp             IN      A       192.168.0.3
