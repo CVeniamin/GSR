@@ -1,1 +1,3 @@
 /etc/init.d/networking start
+
+export http_proxy=http://httpProxy.contatudo.gsr:3128/

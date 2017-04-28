@@ -1,5 +1,15 @@
 ip addr add dev eth0 192.168.0.3/29
 ip link set dev eth0 up
 route add default gw 192.168.0.1 eth0
+
+# Monitoring
 /etc/init.d/snmpd start
+
+# FTP
 /etc/init.d/proftpd start
+
+#FTP Users
+adduser --disabled-password --gecos "" user1
+echo 'user1:user1' | chpasswd
+adduser --disabled-password --gecos "" user2
+echo 'user2:user2' | chpasswd

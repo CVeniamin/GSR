@@ -1,5 +1,29 @@
 ip addr add dev eth0 10.0.2.82/28
 ip link set dev eth0 up
 route add default gw 10.0.2.81 eth0
+
+# DNS
 /etc/init.d/bind start
+
+# Monitoring
 /etc/init.d/snmpd start
+
+# Mail
+chmod a+w /var/spool/mail
+chmod go-rw /etc/exim4/exim4.conf
+
+useradd -b /home -p $6$bh4MOQ.0u66zh1kS$.JKXIJProgBtrNlSPZK2Quia.kFMiJ61cPTTx0gyPSWxeh7ntktf6x4n/ifS56C9ABUHJVfARo/bGP8VVStlR1 director
+useradd -b /home -p $6$4wFDEgE/MT6BgmeF$3GvPK2L3wUsmZWvpUfp2NYNewujJe4vYgELZPAJR7zNrtqq6j3h9vhGokP1WWCFrYvsY6z1J7C0ZtB82Yrugl1 contabilidade
+useradd -b /home -p $6$4rDj1DESEVJgklxS$a4R.f9m.G1GC.pY4IDjcDDg0PVitTvSD3i2Tom7TwERrVUAYx1f.rDNzYVXn9Gl5qZ3AX9C.059JTSTUI6slq0 rh
+useradd -b /home -p $6$9UW5vXD8DMZpxw0W$W8n/61x7tH9gogkuM6zjLmqt29Ul6/0SBq//u2zZEYJR2OGXpUv9QvOiPlBSTk6nWNjXGMviSmiB26IEb/eBM1 lisboa
+useradd -b /home -p $6$dJLOzfeq8Tx7zp5J$g41W2n/5LyqcHCIzWMwPTMO1HZSeLCsOKGWFeK9/BszSKJ2p9UHdGYhCN27x5qHWyzQTz68.VBhlU4jpWiTuM0 lisboa-contab1
+useradd -b /home -p $6$O.OLswz/GJOUuf8x$UT9Rt8va/aumH1/I3plPkrLnmbOHezlIqYXkYfQTTtNcCNj4NV8Uf0J9QIrCu.oSJjNziCuOsFFZoTFY5/Qy7/ lisboa-contab2
+useradd -b /home -p $6$PaHAslbb00XKlV6/$D3VivKTe5wo49RWvTTcQBX.C7Dx/Ybi5yU0v6qYmK/MeVnau361TBXtws1SpguvfrQ66bCoAUpxc71OYI3BH3/ porto
+useradd -b /home -p $6$vrguB6xdvAwHSdY1$cSDhp4Ox2IeIPz9pO0nP.z6g35LpVAepeDwVteWmXSmQ.HiiFtqhNOwnJw3kAZBR1VGPozIZ2tyAg98d.4n7a. porto-contab1
+useradd -b /home -p $6$Of2lcPg8sL0QCWO1$l.syJckLMF50rHZgscS9kWcOlRcZEQzS622y3tkfeHABgv0XeYhZD1knIib6nxG8yWmzk8vlPGclAfXFU/WtR. porto-contab2
+useradd -b /home -p $6$gMnLGIcAvKBpGGLw$zQsN1OADC9aO8vcFOpB91ZyRLCpxVbJNcNC/g8QUlBwF1PFG4xEP/dTug7lueFzpnWsdcNw5uKnlFMMK3oure0 geral
+
+newaliases
+
+/etc/init.d/exim4 start
+/etc/init.d/inetd start

@@ -1,4 +1,9 @@
 ip addr add dev eth0 10.0.2.84/28
 ip link set dev eth0 up
 route add default gw 10.0.2.81 eth0
+
+# Monitoring
 /etc/init.d/snmpd start
+
+# HTTP Proxy
+/etc/init.d/squid start
