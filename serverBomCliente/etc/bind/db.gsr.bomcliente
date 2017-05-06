@@ -12,5 +12,5 @@ $TTL   60000
 server           IN      A       10.0.0.10
 mail             IN      A       10.0.0.10
 imap             IN      A       10.0.0.10
-pop             IN      A       10.0.0.10
+pop              IN      A       10.0.0.10
 www              IN      A       10.0.0.10

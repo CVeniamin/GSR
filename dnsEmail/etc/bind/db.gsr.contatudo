@@ -14,11 +14,16 @@ $TTL   60000
 dnsemail        IN      A       10.0.2.82
 mail            IN      A       10.0.2.82
 imap            IN      A       10.0.2.82
-pop            IN      A       10.0.2.82
+pop             IN      A       10.0.2.82
 dnshttp         IN      A       10.0.2.83
 www             IN      A       10.0.2.83
 httpProxy       IN      A       10.0.2.84
 diretor         IN      A       10.0.2.66
-contabilista    IN      A       10.0.2.67
+contabilidade   IN      A       10.0.2.67
 rh              IN      A       10.0.2.68
 ftp             IN      A       192.168.0.3
+
+contabilistaLisboa1  IN      A       192.168.0.10
+contabilistaLisboa2  IN      A       192.168.0.11
+contabilistaPorto1  IN      A       192.168.0.18
+contabilistaPorto2  IN      A       192.168.0.19

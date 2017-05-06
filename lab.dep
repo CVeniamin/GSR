@@ -1,4 +1,10 @@
 monitor:switchPrivado switchPublico routerSede routerLisboa routerPorto routerISP fileServer dnsEmail dnsHttp httpProxy
-diretor:routerSede
+fileServer:switchPrivado routerSede routerISP
+diretor:routerSede switchSede
 contabilista:diretor
 rh:contabilista diretor
+pcBomCliente:switchBomCliente routerBomCliente routerISP
+portoVisitante2: portoVisitante1 routerPorto
+lisboaVisitante2: lisboaVisitante1 routerLisboa
+contabilistaPorto2: contabilistaPorto1 routerPorto switchPorto
+contabilistaLisboa2: contabilistaLisboa2 routerLisboa switchLisboa
