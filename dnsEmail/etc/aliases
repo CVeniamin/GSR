@@ -12,3 +12,5 @@ abuse: root
 noc: root
 security: root
 geral: director@contatudo.gsr,contabilidade@contatudo.gsr
+lisboa: lisboa-contab1@contatudo.gsr,lisboa-contab2@contatudo.gsr
+porto: porto-contab1@contatudo.gsr,porto-contab2@contatudo.gsr
