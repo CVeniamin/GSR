@@ -2,7 +2,6 @@ ip addr add dev eth0 10.0.2.82/28
 ip link set dev eth0 up
 route add default gw 10.0.2.81 eth0
 
-
 # Mail
 chmod a+w /var/spool/mail
 chmod go-rw /etc/exim4/exim4.conf
