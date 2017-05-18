@@ -10,11 +10,11 @@ $TTL   60000
 @               IN      NS      ns.gsr.
 ns.gsr.	        IN	    A	      10.0.0.22
 
-contatudo		        IN 	    NS	    dnsemail.contatudo.gsr.
-dnsemail.contatudo.gsr.	    IN 	    A	      10.0.2.82
-
 contatudo		        IN 	    NS	    dnshttp.contatudo.gsr.
 dnshttp.contatudo.gsr.      IN      A       10.0.2.83
+
+contatudo		        IN 	    NS	    dnsemail.contatudo.gsr.
+dnsemail.contatudo.gsr.	    IN 	    A	      10.0.2.82
 
 bomcliente		  IN 	    NS	    server.bomcliente.gsr.
 server.bomcliente.gsr.	    IN 	    A	      10.0.0.10

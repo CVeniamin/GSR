@@ -11,6 +11,7 @@ $TTL   60000
 @               IN      NS      dnshttp.contatudo.gsr.
 @               IN      MX      10 mail.contatudo.gsr.
 @               IN      A       10.0.2.82
+@               IN      A       10.0.2.83
 dnsemail        IN      A       10.0.2.82
 mail            IN      A       10.0.2.82
 imap            IN      A       10.0.2.82
