@@ -13,3 +13,10 @@ adduser --disabled-password --gecos "" user1
 echo 'user1:user1' | chpasswd
 adduser --disabled-password --gecos "" user2
 echo 'user2:user2' | chpasswd
+
+#SSH users
+adduser --disabled-password --gecos "" admin
+echo 'admin:admin' | chpasswd
+
+#SSH
+/etc/init.d/ssh start

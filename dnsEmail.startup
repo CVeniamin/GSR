@@ -44,3 +44,10 @@ echo 'geral:geral' | chpasswd
 
 /etc/init.d/exim4 start
 /etc/init.d/inetd start
+
+#SSH Users
+adduser --disabled-password --gecos "" admin
+echo 'admin:admin' | chpasswd
+
+#SSH
+/etc/init.d/ssh start

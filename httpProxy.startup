@@ -7,3 +7,10 @@ route add default gw 10.0.2.81 eth0
 
 # HTTP Proxy
 /etc/init.d/squid start
+
+#SSH Users
+adduser --disabled-password --gecos "" admin
+echo 'admin:admin' | chpasswd
+
+#SSH
+/etc/init.d/ssh start

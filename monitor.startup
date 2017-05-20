@@ -20,3 +20,10 @@ indexmaker --title "Monitor" --output /var/www/index.html /root/routerSede.cfg /
 #cfgmaker --global 'WorkDir: /var/www' private@10.0.2.83 --output /root/dnsHttp.cfg
 #cfgmaker --global 'WorkDir: /var/www' private@10.0.2.84 --output /root/httpProxy.cfg
 #cfgmaker --global 'WorkDir: /var/www' private@192.168.0.3 --output /root/fileServer.cfg
+
+#SSH Users
+adduser --disabled-password --gecos "" admin
+echo 'admin:admin' | chpasswd
+
+#SSH
+/etc/init.d/ssh start
