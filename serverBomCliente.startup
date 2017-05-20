@@ -6,6 +6,9 @@ route add default gw 10.0.0.9 eth0
 chmod a+w /var/spool/mail
 chmod go-rw /etc/exim4/exim4.conf
 
+chown -R $USER:$USER /var/www/bomcliente.gsr/public_html
+chmod -R 755 /var/www/
+
 adduser --disabled-password --gecos "" info
 echo 'info:info' | chpasswd
 
@@ -16,6 +19,6 @@ echo 'info:info' | chpasswd
 /etc/init.d/inetd start
 
 # Web
-a2ensite www.bomcliente.gsr.conf
+a2ensite bomcliente.gsr.conf
 
-/etc/init.d/apache2 start
+/etc/init.d/apache2 restart

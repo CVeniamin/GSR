@@ -23,7 +23,8 @@ diretor         IN      A       10.0.2.66
 contabilidade   IN      A       10.0.2.67
 rh              IN      A       10.0.2.68
 ftp             IN      A       192.168.0.3
-
+intranet        IN      A       10.0.2.83
+clientes        IN      A       10.0.2.83
 contabilistaLisboa1  IN      A       192.168.0.10
 contabilistaLisboa2  IN      A       192.168.0.11
 contabilistaPorto1  IN      A       192.168.0.18
