@@ -25,5 +25,9 @@ indexmaker --title "Monitor" --output /var/www/index.html /root/routerSede.cfg /
 adduser --disabled-password --gecos "" admin
 echo 'admin:admin' | chpasswd
 
+cd /home
+chown -R admin:admin admin
+chmod -R 700 admin/
+
 #SSH
 /etc/init.d/ssh start

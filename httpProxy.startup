@@ -12,5 +12,9 @@ route add default gw 10.0.2.81 eth0
 adduser --disabled-password --gecos "" admin
 echo 'admin:admin' | chpasswd
 
+cd /home
+chown -R admin:admin admin
+chmod -R 700 admin/
+
 #SSH
 /etc/init.d/ssh start
