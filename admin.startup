@@ -9,8 +9,8 @@ chmod 700 /root/.ssh/id_rsa
 #screen -S dnsHttp1
 #. /root/scripts/fileServer.sh
 #screen -S fileServer
-#. /root/scripts/admin.sh
+#. /root/scripts/adminFileServer.sh
 #screen -S dnsHttp2
 #. /root/scripts/monitor.sh
 #screen -S monitor
-#. /root/scripts/admin.sh
+#. /root/scripts/adminMonitor.sh
