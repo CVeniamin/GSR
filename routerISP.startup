@@ -12,6 +12,3 @@ echo 1 >/proc/sys/net/ipv4/ip_forward
 
 #Fornece acesso ao internet aos equipamentos da rede
 iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
-
-#Adicionar este comando na sua maquina local(tap)
-#sudo ip route add 192.168.0.0/24 via 192.168.100.2

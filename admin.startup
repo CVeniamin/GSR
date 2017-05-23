@@ -14,3 +14,20 @@ chmod 700 /root/.ssh/id_rsa
 #. /root/scripts/monitor.sh
 #screen -S monitor
 #. /root/scripts/adminMonitor.sh
+
+
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+# Allow TUN interface connections to OpenVPN server
+iptables -A INPUT -i tun+ -j ACCEPT
+
+ # Allow TUN interface connections to be forwarded through other interfaces
+iptables -A FORWARD -i tun+ -j ACCEPT
+
+ # Allow TAP interface connections to OpenVPN server
+iptables -A INPUT -i tap+ -j ACCEPT
+
+ # Allow TAP interface connections to be forwarded through other interfaces
+iptables -A FORWARD -i tap+ -j ACCEPT
+
+#/etc/init.d/openvpn start

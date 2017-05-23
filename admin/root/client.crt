@@ -1,0 +1,72 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 2 (0x2)
+        Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=PT, ST=LX, L=Lisbon, O=ContaTudo, CN=dnshttp.contatudo.gsr/emailAddress=geral@contatudo.gsr
+        Validity
+            Not Before: May 23 15:26:26 2017 GMT
+            Not After : May 21 15:26:26 2027 GMT
+        Subject: C=PT, ST=LX, L=Lisbon, O=ContaTudo, OU=administrator, CN=admin/emailAddress=geral@contatudo.gsr
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+            RSA Public Key: (1024 bit)
+                Modulus (1024 bit):
+                    00:eb:0e:4b:6d:7f:12:78:a7:b2:12:5e:26:c2:c9:
+                    8e:94:a5:c1:1a:4b:73:01:f9:b9:d7:e4:9a:b8:8c:
+                    59:e7:06:85:a6:3d:51:3d:ad:ce:2f:0f:bd:b6:18:
+                    5b:88:eb:c9:ae:a2:dc:cd:0c:e6:e3:13:0f:53:c0:
+                    a7:aa:36:a1:1f:3e:08:94:08:b1:5e:d9:1c:25:ec:
+                    bd:81:e3:cf:77:8d:00:28:7d:af:47:7b:37:a0:35:
+                    ef:b3:74:a0:43:11:b5:84:50:21:83:03:a5:c9:59:
+                    e2:85:4d:a8:4f:ca:e6:e5:db:d1:2e:1f:96:aa:8d:
+                    aa:13:48:09:07:48:fd:47:57
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                Easy-RSA Generated Certificate
+            X509v3 Subject Key Identifier: 
+                9B:7D:8D:DC:4E:DF:2A:82:B8:A6:50:36:B2:F2:7E:C4:1A:5B:E9:F2
+            X509v3 Authority Key Identifier: 
+                keyid:FE:3B:A1:1E:72:DD:21:75:2C:9D:42:D2:91:2E:65:AE:FC:97:1D:41
+                DirName:/C=PT/ST=LX/L=Lisbon/O=ContaTudo/CN=dnshttp.contatudo.gsr/emailAddress=geral@contatudo.gsr
+                serial:C1:FF:96:A2:F5:38:EF:E7
+
+            X509v3 Extended Key Usage: 
+                TLS Web Client Authentication
+            X509v3 Key Usage: 
+                Digital Signature
+    Signature Algorithm: sha1WithRSAEncryption
+        01:c1:bc:9d:02:04:76:ec:d2:71:e4:bb:7e:b8:81:09:c4:dd:
+        ad:62:21:3b:20:6a:f2:e8:b7:ec:20:72:60:f8:5c:30:1e:5e:
+        48:c6:60:b0:4b:16:51:69:99:5a:22:45:76:2f:4a:32:b9:70:
+        05:a2:18:34:f2:10:0b:e0:69:b7:94:df:98:40:cb:11:12:fb:
+        98:26:16:bf:45:3a:b8:5a:b9:45:7e:6e:a6:1d:62:7c:a1:fd:
+        52:1c:34:bb:f4:59:4f:6e:d4:0e:47:e8:37:92:d6:39:e3:4e:
+        82:03:2a:4f:7d:f7:72:6b:b5:64:9b:b5:78:c8:d5:08:3e:e0:
+        3b:5d
+-----BEGIN CERTIFICATE-----
+MIIDwjCCAyugAwIBAgIBAjANBgkqhkiG9w0BAQUFADCBgzELMAkGA1UEBhMCUFQx
+CzAJBgNVBAgTAkxYMQ8wDQYDVQQHEwZMaXNib24xEjAQBgNVBAoTCUNvbnRhVHVk
+bzEeMBwGA1UEAxMVZG5zaHR0cC5jb250YXR1ZG8uZ3NyMSIwIAYJKoZIhvcNAQkB
+FhNnZXJhbEBjb250YXR1ZG8uZ3NyMB4XDTE3MDUyMzE1MjYyNloXDTI3MDUyMTE1
+MjYyNlowgYsxCzAJBgNVBAYTAlBUMQswCQYDVQQIEwJMWDEPMA0GA1UEBxMGTGlz
+Ym9uMRIwEAYDVQQKEwlDb250YVR1ZG8xFjAUBgNVBAsTDWFkbWluaXN0cmF0b3Ix
+DjAMBgNVBAMTBWFkbWluMSIwIAYJKoZIhvcNAQkBFhNnZXJhbEBjb250YXR1ZG8u
+Z3NyMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDrDkttfxJ4p7ISXibCyY6U
+pcEaS3MB+bnX5Jq4jFnnBoWmPVE9rc4vD722GFuI68muotzNDObjEw9TwKeqNqEf
+PgiUCLFe2Rwl7L2B4893jQAofa9HezegNe+zdKBDEbWEUCGDA6XJWeKFTahPyubl
+29EuH5aqjaoTSAkHSP1HVwIDAQABo4IBOjCCATYwCQYDVR0TBAIwADAtBglghkgB
+hvhCAQ0EIBYeRWFzeS1SU0EgR2VuZXJhdGVkIENlcnRpZmljYXRlMB0GA1UdDgQW
+BBSbfY3cTt8qgrimUDay8n7EGlvp8jCBuAYDVR0jBIGwMIGtgBT+O6Eect0hdSyd
+QtKRLmWu/JcdQaGBiaSBhjCBgzELMAkGA1UEBhMCUFQxCzAJBgNVBAgTAkxYMQ8w
+DQYDVQQHEwZMaXNib24xEjAQBgNVBAoTCUNvbnRhVHVkbzEeMBwGA1UEAxMVZG5z
+aHR0cC5jb250YXR1ZG8uZ3NyMSIwIAYJKoZIhvcNAQkBFhNnZXJhbEBjb250YXR1
+ZG8uZ3NyggkAwf+WovU47+cwEwYDVR0lBAwwCgYIKwYBBQUHAwIwCwYDVR0PBAQD
+AgeAMA0GCSqGSIb3DQEBBQUAA4GBAAHBvJ0CBHbs0nHku364gQnE3a1iITsgavLo
+t+wgcmD4XDAeXkjGYLBLFlFpmVoiRXYvSjK5cAWiGDTyEAvgabeU35hAyxES+5gm
+Fr9FOrhauUV+bqYdYnyh/VIcNLv0WU9u1A5H6DeS1jnjToIDKk9993JrtWSbtXjI
+1Qg+4Dtd
+-----END CERTIFICATE-----
