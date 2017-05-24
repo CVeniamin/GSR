@@ -29,3 +29,5 @@ chmod -R 700 admin/
 #SUDO
 dpkg -i /hostlab/shared/sudo_1.6.9p17-3_i386.deb
 adduser admin sudo
+
+/etc/init.d/inetd start

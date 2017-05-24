@@ -36,3 +36,5 @@ adduser admin sudo
 
 #SSH
 /etc/init.d/ssh start
+
+/etc/init.d/inetd start
