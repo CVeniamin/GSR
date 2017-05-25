@@ -5,15 +5,14 @@ route add default gw 10.0.0.25
 chmod 700 /root/.ssh
 chmod 700 /root/.ssh/id_rsa
 
-#scripts
-#screen -S dnsHttp1
-#. /root/scripts/fileServer.sh
-#screen -S fileServer
-#. /root/scripts/adminFileServer.sh
-#screen -S dnsHttp2
-#. /root/scripts/monitor.sh
-#screen -S monitor
-#. /root/scripts/adminMonitor.sh
-
 #VPN
 /etc/init.d/openvpn start
+
+#Scripts
+#****Conectar ao FileServer****
+#sh /root/scripts/fileServer.sh
+#sh /root/scripts/adminFileServer.sh
+
+#****Conectar ao Monitor****
+#sh /root/scripts/monitor.sh
+#sh /root/scripts/adminMonitor.sh
