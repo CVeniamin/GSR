@@ -8,6 +8,7 @@ ip addr add dev eth4 10.0.0.25/30
 ip link set dev eth4 up
 /etc/init.d/zebra start
 /etc/init.d/apache2 start
+/etc/init.d/bind start
 echo 1 >/proc/sys/net/ipv4/ip_forward
 
 #Fornece acesso ao internet aos equipamentos da rede

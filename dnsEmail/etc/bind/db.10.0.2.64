@@ -1,0 +1,25 @@
+$TTL 60000
+$ORIGIN 64/26.2.0.10.IN-ADDR.ARPA.
+@     IN     SOA     dnsemail.contatudo.gsr.    root.dnsemail.contatudo.gsr. (
+                  2017042201 ; serial
+                  28800 ; refresh
+                  14400 ; retry
+                  3600000 ; expire
+                  0 ; negative cache ttl
+                  );
+                  IN  NS      dnsemail.contatudo.gsr.
+                  IN  NS      dnshttp.contatudo.gsr.
+; IPs addresses in the subnet - all need to be defined
+; except 64 and 121 since they are the subnets
+; network and broadcast addresses not hosts/nodes
+65            IN  PTR   routersede.contatudo.gsr.
+66            IN  PTR   diretor.contatudo.gsr.
+67            IN  PTR   contabilista.contatudo.gsr.
+68            IN  PTR   rh.contatudo.gsr.
+81            IN  PTR   routerSede.contatudo.gsr.
+82            IN  PTR   dnsemail.contatudo.gsr.
+83            IN  PTR   dnshttp.contatudo.gsr.
+84            IN  PTR   httpproxy.contatudo.gsr.
+97            IN  PTR   routerLisboa.contatudo.gsr.
+112           IN  PTR   routerPorto.contatudo.gsr.
+; end of 10.0.2.64/26 subnet

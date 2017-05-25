@@ -1,0 +1,17 @@
+$TTL 60000
+$ORIGIN 8/29.0.0.10.IN-ADDR.ARPA.
+@     IN     SOA     server.bomcliente.gsr.    root.server.bomcliente.gsr. (
+                  2017042201 ; serial
+                  28800 ; refresh
+                  14400 ; retry
+                  3600000 ; expire
+                  0 ; negative cache ttl
+                  );
+                  IN  NS      server.bomcliente.gsr.
+; IPs addresses in the subnet - all need to be defined
+; except 8 and 15 since they are the subnets
+; network and broadcast addresses not hosts/nodes
+9             IN  PTR   routerBomCliente.bomcliente.gsr.
+10            IN  PTR   server.bomcliente.gsr.
+11            IN  PTR   pc.bomcliente.gsr.
+; end of 10.0.0.8/29 subnet

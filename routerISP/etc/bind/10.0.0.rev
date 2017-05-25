@@ -1,0 +1,49 @@
+$TTL 60000
+$ORIGIN 0.0.10.IN-ADDR.ARPA.
+@               IN      SOA     ns.isp.com.    root.ns.isp.com.gsr. (
+                        2017041101 ; serial
+                        28800 ; refresh
+                        14400 ; retry
+                        3600000 ; expire
+                        0 ; negative cache ttl
+                        )
+              IN  NS      ns.isp.com.
+; definition of other IP address 1 - 6
+; IPs addresses in the subnet - all need to be defined
+; except 0 and 7 since they are the subnets
+; network and broadcast addresses not hosts/nodes
+;$GENERATE 1-6 $ CNAME $.0/26
+1             IN  PTR   routerisp
+2             IN  PTR   routerbomcliente
+17            IN  PTR   routersede
+18            IN  PTR   routerisp
+21            IN  PTR   routerisp
+22            IN  PTR   dnsroot
+25            IN  PTR   routerisp
+26            IN  PTR   admin
+
+; definition of our target 10.0.0.8/29 subnet
+; name servers for subnet reverse map
+8/29           IN  NS  server.bomcliente.gsr.
+; IPs addresses in the subnet - all need to be defined
+; except 8 and 15 since they are the subnets
+; network and broadcast addresses not hosts/nodes
+;$GENERATE 9-15 $ CNAME $.8/29
+9             IN  CNAME   9.8/29
+10            IN  CNAME   10.8/29
+11            IN  CNAME   11.8/29
+12            IN  CNAME   12.8/29
+13            IN  CNAME   13.8/29
+14            IN  CNAME   14.8/29
+15            IN  CNAME   15.8/29
+; end of 10.0.0.8/29 subnet
+
+; definition of our target 10.0.0.128/26 subnet
+128/26       IN  NS  dnsemail.contatudo.gsr.
+128/26       IN  NS  dnshttp.contatudo.gsr.
+; IPs addresses in the subnet - all need to be defined
+; except 128 and 192 since they are the subnets
+; network and broadcast addresses not hosts/nodes
+$GENERATE 129-191 $ CNAME $.128/26
+
+; other subnet definitions

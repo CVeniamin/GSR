@@ -1,0 +1,21 @@
+$TTL 60000
+$ORIGIN 2.0.10.IN-ADDR.ARPA.
+@               IN      SOA     ns.isp.com.    root.ns.isp.com.gsr. (
+                        2017041101 ; serial
+                        28800 ; refresh
+                        14400 ; retry
+                        3600000 ; expire
+                        0 ; negative cache ttl
+                        )
+              IN  NS      ns.isp.com.
+; definition of our target 10.0.2.64/26 subnet
+; name servers for subnet reverse map
+64/26           IN  NS  dnsemail.contatudo.gsr.
+64/26           IN  NS  dnshttp.contatudo.gsr.
+; IPs addresses in the subnet - all need to be defined
+; except 64 and 121 since they are the subnets
+; network and broadcast addresses not hosts/nodes
+$GENERATE 65-120 $ CNAME $.64/26
+; end of 10.0.2.64/26 subnet
+
+; other subnet definitions
