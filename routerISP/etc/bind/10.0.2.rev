@@ -1,6 +1,6 @@
 $TTL 60000
 $ORIGIN 2.0.10.IN-ADDR.ARPA.
-@               IN      SOA     ns.isp.com.    root.ns.isp.com.gsr. (
+@               IN      SOA     ns.isp.com.    root.ns.isp.com. (
                         2017041101 ; serial
                         28800 ; refresh
                         14400 ; retry
