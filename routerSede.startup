@@ -15,3 +15,56 @@ ip route add 192.168.1.0/29 via 10.0.2.83
 /etc/init.d/dhcp3-server start
 /etc/init.d/snmpd start
 /etc/init.d/inetd start
+
+iptables -F
+
+WEB_INTERFACE=eth2
+USER_INTERFACES=eth0 eth1 eth3
+PROXY_ADDR='10.0.2.84'
+WEB_ADDR='10.0.2.83'
+
+# Block outgoing HTTP(S) for everything but proxy server
+for i in $USER_INTERFACES
+ do
+  #iptables -t nat -A PREROUTING -i $i -s ! $PROXY_ADDR -p tcp --dport 80 -j DNAT --to $PROXY_ADDR:3128
+  #iptables -t nat -A POSTROUTING -o $i -d $PROXY_ADDR -j SNAT --to iptables-box
+  #iptables -A FORWARD -d $PROXY_ADDR -i $i -o $i -p tcp --dport 3128 -j ACCEPT
+  iptables -t nat -A PREROUTING -i $i -p tcp -m multiport --dports 80,443 -j DNAT --to-destination $PROXY_ADDR:3128
+done
+
+# Block all outgoing and incoming traffic for private IPs
+iptables -A FORWARD -s 192.168.0.0/16 -o $WEB_INTERFACE -j DROP
+iptables -A FORWARD -d 192.168.0.0/16 -i $WEB_INTERFACE -j DROP
+
+# Protect services from access from Internet
+iptables -A FORWARD -d $PROXY_ADDR --dport 3128 -i $WEB_INTERFACE -j DROP
+
+# Open public services for access from Internet
+iptables -A FORWARD -p tcp -d $WEB_ADDR -m multiport --dports 80,443 -j ACCEPT # HTTP(S)
+iptables -A FORWARD -p tcp -d $WEB_ADDR -m multiport --dports 80,443 -j ACCEPT #
+SMTP
+IMAP
+DNS
+SSH
+VPN
+
+#Permite que as maquinas internas acedam a internet sem restricoes
+iptables -A FORWARD -i eth0 -j ACCEPT
+iptables -A FORWARD -i eth1 -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+#Permite IMAP para o servidor sDns
+iptables -A FORWARD -d 1.2.3.140 -p tcp --dport 143 -j ACCEPT
+
+#Permitir DNS para servidor S3Dns
+iptables -A FORWARD -p udp -d 1.2.3.141 --dport 53 -j ACCEPT
+
+#Permitir DNS para servidor S3sDns
+iptables -A FORWARD -p udp -d 1.2.3.140 --dport 53 -j ACCEPT
+
+#Permite SMTP para o servidor sDns
+iptables -A FORWARD -p tcp -d 1.2.3.140 --dport 25 -j ACCEPT
+
+#Permite POP3 para o servidor sDns
+iptables -A FORWARD -p tcp -d 1.2.3.140 --dport 110 -j ACCEPT
+
+iptables -P FORWARD DROP
