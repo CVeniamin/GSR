@@ -8,12 +8,15 @@ route add default gw 10.0.2.81 eth0
 # Monitoring
 /etc/init.d/snmpd start
 
+#Enable SSL
+a2enmod ssl
+
 # Web
+/etc/init.d/apache2 start
 a2ensite clientes.contatudo.gsr.conf
 a2ensite intranet.contatudo.gsr.conf
 a2ensite www.contatudo.gsr.conf
-
-/etc/init.d/apache2 restart
+/etc/init.d/apache2 reload
 
 #SSH Users
 adduser --disabled-password --gecos "" admin
