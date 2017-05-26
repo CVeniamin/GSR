@@ -18,55 +18,29 @@ ip route add 192.168.1.0/29 via 10.0.2.83
 
 iptables --flush
 
-WEB_INTERFACE=eth2
-USER_INTERFACES=eth0 eth1 eth3
-PROXY_ADDR='10.0.2.84'
-WEB_ADDR='10.0.2.83'
-
-# Block outgoing HTTP(S) for everything but proxy server
-for i in $USER_INTERFACES
- do
-  #iptables -t nat -A PREROUTING -i $i -s ! $PROXY_ADDR -p tcp --dport 80 -j DNAT --to $PROXY_ADDR:3128
-  #iptables -t nat -A POSTROUTING -o $i -d $PROXY_ADDR -j SNAT --to iptables-box
-  #iptables -A FORWARD -d $PROXY_ADDR -i $i -o $i -p tcp --dport 3128 -j ACCEPT
-  iptables -t nat -A PREROUTING -i $i -p tcp -m multiport --dports 80,443 -j DNAT --to-destination $PROXY_ADDR:3128
-done
-
-# Block all outgoing and incoming traffic for private IPs
-iptables -A FORWARD -s 192.168.0.0/16 -o $WEB_INTERFACE -j DROP
-iptables -A FORWARD -d 192.168.0.0/16 -i $WEB_INTERFACE -j DROP
-
-# Protect services from access from Internet
-iptables -A FORWARD -d $PROXY_ADDR --dport 3128 -i $WEB_INTERFACE -j DROP
-
-# Open public services for access from Internet
-iptables -A FORWARD -p tcp -d $WEB_ADDR -m multiport --dports 80,443 -j ACCEPT # HTTP(S)
-iptables -A FORWARD -p tcp -d $WEB_ADDR -m multiport --dports 80,443 -j ACCEPT # SMTP IMAP DNS SSH VPN
-
-
 #Bloquear acesso do exterior para maquinas de IP privado
 iptables -A FORWARD -i eth2 -d 192.168.0.0/28 -j DROP
+
+#Bloquear acesso do interior para o exterior
+iptables -A FORWARD -s 192.168.0.0/28 -o eth2 -j DROP
 
 #Evitar IP spoofing
 iptables -A FORWARD -i eth2 -s 192.168.0.0/28 -j DROP
 iptables -A FORWARD -i eth2 -s 10.0.2.64/26 -j DROP
 iptables -A FORWARD -i eth2 -s 10.0.0.128/26 -j DROP
 
-#Permitir a internet acesso aos Serviços Administrativos Lisboa
+#Permitir acesso a internet aos Serviços Administrativos Lisboa
 iptables -A FORWARD -s 10.0.2.64/28 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -d 10.0.2.64/28 -m state --state ESTABLISHED -j ACCEPT
 iptables -A FORWARD -i eth2 -d 10.0.2.64/28 -m state --state NEW -j DROP
 
-#Permitir a internet acesso aos visitantes Escritorio Lisboa
+#Permitir acesso a internet aos visitantes Escritorio Lisboa
 iptables -A FORWARD -s 10.0.2.96/28 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -d 10.0.2.96/28 -m state --state ESTABLISHED -j ACCEPT
-iptables -A FORWARD -i eth2 -d 10.0.2.96/28 -m state --state NEW -j DROP
 
-#Permitir a internet acesso ao visitantes Escritorio Porto
+#Permitir acesso a internet aos visitantes Escritorio Porto
 iptables -A FORWARD -s 10.0.2.112/28 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -d 10.0.2.112/28 -m state --state ESTABLISHED -j ACCEPT
-iptables -A FORWARD -i eth2 -d 10.0.2.112/28 -m state --state NEW -j DROP
-
 
 #trafego para dnsEmail
 iptables -A FORWARD -i eth2 -d 10.0.2.82 -p tcp --dport 80 -j ACCEPT #HTTP
@@ -83,8 +57,6 @@ iptables -A FORWARD -i eth2 -d 10.0.2.82 -j DROP #Restante
 #trafego para dnsHttp
 iptables -A FORWARD -i eth2 -d 10.0.2.83 -p tcp --dport 80 -j ACCEPT #HTTP
 iptables -A FORWARD -i eth2 -d 10.0.2.83 -p tcp --dport 443 -j ACCEPT #HTTPS
-iptables -A FORWARD -i eth2 -d 10.0.2.83 -p tcp --dport 25 -j ACCEPT #SMPT
-iptables -A FORWARD -i eth2 -d 10.0.2.83 -p tcp --dport 143 -j ACCEPT #IMAP
 iptables -A FORWARD -i eth2 -d 10.0.2.83 -p udp --dport 53 -j ACCEPT #DNS
 iptables -A FORWARD -i eth2 -d 10.0.2.83 -p tcp --dport 53 -j ACCEPT #DNS
 iptables -A FORWARD -i eth2 -d 10.0.2.83 -p tcp --dport 22 -j ACCEPT #SSH
