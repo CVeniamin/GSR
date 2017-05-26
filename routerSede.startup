@@ -16,7 +16,7 @@ ip route add 192.168.1.0/29 via 10.0.2.83
 /etc/init.d/snmpd start
 /etc/init.d/inetd start
 
-iptables -F
+iptables --flush
 
 WEB_INTERFACE=eth2
 USER_INTERFACES=eth0 eth1 eth3
@@ -41,30 +41,55 @@ iptables -A FORWARD -d $PROXY_ADDR --dport 3128 -i $WEB_INTERFACE -j DROP
 
 # Open public services for access from Internet
 iptables -A FORWARD -p tcp -d $WEB_ADDR -m multiport --dports 80,443 -j ACCEPT # HTTP(S)
-iptables -A FORWARD -p tcp -d $WEB_ADDR -m multiport --dports 80,443 -j ACCEPT #
-SMTP
-IMAP
-DNS
-SSH
-VPN
+iptables -A FORWARD -p tcp -d $WEB_ADDR -m multiport --dports 80,443 -j ACCEPT # SMTP IMAP DNS SSH VPN
 
-#Permite que as maquinas internas acedam a internet sem restricoes
-iptables -A FORWARD -i eth0 -j ACCEPT
-iptables -A FORWARD -i eth1 -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-#Permite IMAP para o servidor sDns
-iptables -A FORWARD -d 1.2.3.140 -p tcp --dport 143 -j ACCEPT
+#Bloquear acesso do exterior para maquinas de IP privado
+iptables -A FORWARD -i eth2 -d 192.168.0.0/28 -j DROP
 
-#Permitir DNS para servidor S3Dns
-iptables -A FORWARD -p udp -d 1.2.3.141 --dport 53 -j ACCEPT
+#Evitar IP spoofing
+iptables -A FORWARD -i eth2 -s 192.168.0.0/28 -j DROP
+iptables -A FORWARD -i eth2 -s 10.0.2.64/26 -j DROP
+iptables -A FORWARD -i eth2 -s 10.0.0.128/26 -j DROP
 
-#Permitir DNS para servidor S3sDns
-iptables -A FORWARD -p udp -d 1.2.3.140 --dport 53 -j ACCEPT
+#Permitir a internet acesso aos Serviços Administrativos Lisboa
+iptables -A FORWARD -s 10.0.2.64/28 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -d 10.0.2.64/28 -m state --state ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i eth2 -d 10.0.2.64/28 -m state --state NEW -j DROP
 
-#Permite SMTP para o servidor sDns
-iptables -A FORWARD -p tcp -d 1.2.3.140 --dport 25 -j ACCEPT
+#Permitir a internet acesso aos visitantes Escritorio Lisboa
+iptables -A FORWARD -s 10.0.2.96/28 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -d 10.0.2.96/28 -m state --state ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i eth2 -d 10.0.2.96/28 -m state --state NEW -j DROP
 
-#Permite POP3 para o servidor sDns
-iptables -A FORWARD -p tcp -d 1.2.3.140 --dport 110 -j ACCEPT
+#Permitir a internet acesso ao visitantes Escritorio Porto
+iptables -A FORWARD -s 10.0.2.112/28 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -d 10.0.2.112/28 -m state --state ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i eth2 -d 10.0.2.112/28 -m state --state NEW -j DROP
 
-iptables -P FORWARD DROP
+
+#trafego para dnsEmail
+iptables -A FORWARD -i eth2 -d 10.0.2.82 -p tcp --dport 80 -j ACCEPT #HTTP
+iptables -A FORWARD -i eth2 -d 10.0.2.82 -p tcp --dport 443 -j ACCEPT #HTTPS
+iptables -A FORWARD -i eth2 -d 10.0.2.82 -p tcp --dport 25 -j ACCEPT #SMPT
+iptables -A FORWARD -i eth2 -d 10.0.2.82 -p tcp --dport 143 -j ACCEPT #IMAP
+iptables -A FORWARD -i eth2 -d 10.0.2.82 -p udp --dport 53 -j ACCEPT #DNS
+iptables -A FORWARD -i eth2 -d 10.0.2.82 -p tcp --dport 53 -j ACCEPT #DNS
+iptables -A FORWARD -i eth2 -d 10.0.2.82 -p tcp --dport 22 -j ACCEPT #SSH
+iptables -A FORWARD -i eth2 -s 10.0.2.82 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i eth2 -d 10.0.2.82 -m state --state ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i eth2 -d 10.0.2.82 -j DROP #Restante
+
+#trafego para dnsHttp
+iptables -A FORWARD -i eth2 -d 10.0.2.83 -p tcp --dport 80 -j ACCEPT #HTTP
+iptables -A FORWARD -i eth2 -d 10.0.2.83 -p tcp --dport 443 -j ACCEPT #HTTPS
+iptables -A FORWARD -i eth2 -d 10.0.2.83 -p tcp --dport 25 -j ACCEPT #SMPT
+iptables -A FORWARD -i eth2 -d 10.0.2.83 -p tcp --dport 143 -j ACCEPT #IMAP
+iptables -A FORWARD -i eth2 -d 10.0.2.83 -p udp --dport 53 -j ACCEPT #DNS
+iptables -A FORWARD -i eth2 -d 10.0.2.83 -p tcp --dport 53 -j ACCEPT #DNS
+iptables -A FORWARD -i eth2 -d 10.0.2.83 -p tcp --dport 22 -j ACCEPT #SSH
+#iptables -A FORWARD -i eth2 -d 10.0.2.83 -p tcp --dport 1194 -j ACCEPT #VPN
+iptables -A FORWARD -i eth2 -d 10.0.2.83 -p udp --dport 1194 -j ACCEPT #VPN
+iptables -A FORWARD -i eth2 -s 10.0.2.83 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i eth2 -d 10.0.2.83 -m state --state ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i eth2 -d 10.0.2.83 -j DROP #Restante
